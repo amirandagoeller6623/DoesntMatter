@@ -38,12 +38,12 @@ def sortingItOut(numberOfNums, equation):
             putInEquation = equation[(pemdas[rtrtr] - 1)] * equation[(pemdas[rtrtr] + 1)]
             # add it to the list after removing equation[pemdas[rtrtr - and + 1]]
         if equation[pemdas[rtrtr]] == 6:
-            putInEquation = equation[(pemdas[rtrtr] - 1)] * math.sin(equation[(pemdas[rtrtr + 1])])
+            putInEquation = equation[(pemdas[rtrtr] - 1)] * math.sin(equation[(pemdas[rtrtr] + 1)])
             # see other comments
         if equation[pemdas[rtrtr]] == 7:
-
+            putInEquation = equation[(pemdas[rtrtr] - 1)] * math.cos(equation[(pemdas[rtrtr] + 1)])
         if equation[pemdas[rtrtr]] == 8:
-
+            putInEquation = equation[(pemdas[rtrtr] - 1)] * math.tan(equation[(pemdas[rtrtr] + 1)])
         rtrtr = rtrtr + 1
     print(pemdas)
 
