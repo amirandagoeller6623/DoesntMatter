@@ -33,7 +33,24 @@ def sortingItOut(numberOfNums, equation):
     for x in range(len(pemdas)):
         if equation[pemdas[rtrtr]] == 4:
             putInEquation = equation[(pemdas[rtrtr] - 1)] / equation[(pemdas[rtrtr] + 1)]
-            # add it to the list after removing equation[pemdas[rtrtr - and + 1]]
+            print(equation)
+            equation.pop(pemdas[rtrtr] - 1)
+            print(equation)
+            equation.pop(pemdas[rtrtr] - 1)
+            print(equation)
+            equation.pop(pemdas[rtrtr] - 1)
+            print(equation)
+            equation.insert(pemdas[rtrtr] - 1, putInEquation)
+            print(equation)
+            pemdas.pop(rtrtr)
+            hjhjh = 0
+            print(pemdas)
+            print(len(pemdas))
+            #for y in range(len(pemdas)):
+                #pemdas.insert(((pemdas[hjhjh]) - 2) ,(hjhjh + 1))
+                #pemdas.pop(hjhjh)
+                #hjhjh += 1
+            # lower ever other number in pemdas by 2
         if equation[pemdas[rtrtr]] == 5:
             putInEquation = equation[(pemdas[rtrtr] - 1)] * equation[(pemdas[rtrtr] + 1)]
             # add it to the list after removing equation[pemdas[rtrtr - and + 1]]
@@ -44,7 +61,6 @@ def sortingItOut(numberOfNums, equation):
             putInEquation = equation[(pemdas[rtrtr] - 1)] * math.cos(equation[(pemdas[rtrtr] + 1)])
         if equation[pemdas[rtrtr]] == 8:
             putInEquation = equation[(pemdas[rtrtr] - 1)] * math.tan(equation[(pemdas[rtrtr] + 1)])
-        rtrtr = rtrtr + 1
     print(pemdas)
 
 def checkNum():
@@ -72,15 +88,15 @@ def checkNum():
             num = int(input("Enter the next number: "))
             equation.append(num)
             while symbol == " " or symbol == 1:
-                symbol = int(input("enter your math symbol, type 1 for all options"))
+                symbol = int(input("enter your math operator, type 1 for all options: "))
                 if symbol == 1:
-                    print("plus")
-                    print("minus")
-                    print("divided by")
-                    print("multiplied by")
-                    print("timesSin (note this will put the number after the equation, in the sin function)")
-                    print("timesCos (note this will put the number after the equation, in the cos function)")
-                    print("timesTan (note this will put the number after the equation, in the tan function)")
+                    print("2: plus")
+                    print("3: minus")
+                    print("4: divided by")
+                    print("5: multiplied by")
+                    print("6: timesSin (note this will put the number after the equation, in the sin function)")
+                    print("7: timesCos (note this will put the number after the equation, in the cos function)")
+                    print("8: timesTan (note this will put the number after the equation, in the tan function)")
             equation.append(symbol)
         elif hjhjh == numberOfNums:
             num = int(input("Enter the last number: "))
