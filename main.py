@@ -33,35 +33,90 @@ def sortingItOut(numberOfNums, equation):
     for x in range(len(pemdas)):
         if equation[pemdas[rtrtr]] == 4:
             putInEquation = equation[(pemdas[rtrtr] - 1)] / equation[(pemdas[rtrtr] + 1)]
-            print(equation)
             equation.pop(pemdas[rtrtr] - 1)
-            print(equation)
             equation.pop(pemdas[rtrtr] - 1)
-            print(equation)
             equation.pop(pemdas[rtrtr] - 1)
-            print(equation)
             equation.insert(pemdas[rtrtr] - 1, putInEquation)
-            print(equation)
             pemdas.pop(rtrtr)
             hjhjh = 0
-            print(pemdas)
-            print(len(pemdas))
-            #for y in range(len(pemdas)):
-                #pemdas.insert(((pemdas[hjhjh]) - 2) ,(hjhjh + 1))
-                #pemdas.pop(hjhjh)
-                #hjhjh += 1
-            # lower ever other number in pemdas by 2
-        if equation[pemdas[rtrtr]] == 5:
+            for y in range(len(pemdas)): # 5,9,,, rjrjr = 3,,,, 5,3,9,,,,3,9
+                rjrjr = pemdas[hjhjh] - 2
+                pemdas.insert((hjhjh + 1), rjrjr)
+                pemdas.pop(hjhjh)
+                hjhjh += 1
+        elif equation[pemdas[rtrtr]] == 5:
             putInEquation = equation[(pemdas[rtrtr] - 1)] * equation[(pemdas[rtrtr] + 1)]
-            # add it to the list after removing equation[pemdas[rtrtr - and + 1]]
-        if equation[pemdas[rtrtr]] == 6:
-            putInEquation = equation[(pemdas[rtrtr] - 1)] * math.sin(equation[(pemdas[rtrtr] + 1)])
+            # add it to the list after removing equation[pemdas[rtrtr - and + 1]
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.insert(pemdas[rtrtr] - 1, putInEquation)
+            pemdas.pop(rtrtr)
+            hjhjh = 0
+            for y in range(len(pemdas)):  # 5,9,,, rjrjr = 3,,,, 5,3,9,,,,3,9
+                rjrjr = pemdas[hjhjh] - 2
+                pemdas.insert((hjhjh + 1), rjrjr)
+                pemdas.pop(hjhjh)
+                hjhjh += 1
+        elif equation[pemdas[rtrtr]] == 6:
+            putInEquation = equation[(pemdas[rtrtr] - 1)] * math.sin(math.radians(equation[(pemdas[rtrtr] + 1)]))
             # see other comments
-        if equation[pemdas[rtrtr]] == 7:
-            putInEquation = equation[(pemdas[rtrtr] - 1)] * math.cos(equation[(pemdas[rtrtr] + 1)])
-        if equation[pemdas[rtrtr]] == 8:
-            putInEquation = equation[(pemdas[rtrtr] - 1)] * math.tan(equation[(pemdas[rtrtr] + 1)])
-    print(pemdas)
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.insert(pemdas[rtrtr] - 1, putInEquation)
+            pemdas.pop(rtrtr)
+            hjhjh = 0
+            for y in range(len(pemdas)):  # 5,9,,, rjrjr = 3,,,, 5,3,9,,,,3,9
+                rjrjr = pemdas[hjhjh] - 2
+                pemdas.insert((hjhjh + 1), rjrjr)
+                pemdas.pop(hjhjh)
+                hjhjh += 1
+        elif equation[pemdas[rtrtr]] == 7:
+            putInEquation = equation[(pemdas[rtrtr] - 1)] * math.cos(math.radians(equation[(pemdas[rtrtr] + 1)]))
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.insert(pemdas[rtrtr] - 1, putInEquation)
+            pemdas.pop(rtrtr)
+            hjhjh = 0
+            for y in range(len(pemdas)):  # 5,9,,, rjrjr = 3,,,, 5,3,9,,,,3,9
+                rjrjr = pemdas[hjhjh] - 2
+                pemdas.insert((hjhjh + 1), rjrjr)
+                pemdas.pop(hjhjh)
+                hjhjh += 1
+        elif equation[pemdas[rtrtr]] == 8:
+            putInEquation = equation[(pemdas[rtrtr] - 1)] * math.tan(math.radians(equation[(pemdas[rtrtr] + 1)]))
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.pop(pemdas[rtrtr] - 1)
+            equation.insert(pemdas[rtrtr] - 1, putInEquation)
+            pemdas.pop(rtrtr)
+            hjhjh = 0
+            for y in range(len(pemdas)):  # 5,9,,, rjrjr = 3,,,, 5,3,9,,,,3,9
+                rjrjr = pemdas[hjhjh] - 2
+                pemdas.insert((hjhjh + 1), rjrjr)
+                pemdas.pop(hjhjh)
+                hjhjh += 1
+        print(equation)
+    looplevel = len(equation) // 2
+    checker = 1
+    for i in range(looplevel):
+        # Herrrreeeeeeeeeeeeee
+        if equation[checker] == 2:
+            putInEquation = equation[checker - 1] + equation[checker + 1]
+            equation.pop(checker - 1)
+            equation.pop(checker - 1)
+            equation.pop(checker - 1)
+            equation.insert(checker - 1, putInEquation)
+        if equation[checker] == 3:
+            putInEquation = equation[checker - 1] + equation[checker + 1]
+            equation.pop(checker - 1)
+            equation.pop(checker - 1)
+            equation.pop(checker - 1)
+            equation.insert(checker - 1, putInEquation)
+    print(equation)
+
 
 def checkNum():
     numberOfNums = int(input("How many different numbers are there in your equation? "))
