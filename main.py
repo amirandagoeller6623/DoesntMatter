@@ -20,6 +20,9 @@ description = response['weather'][0]['description']
 sunrise_time = dt.datetime.utcfromtimestamp(response['sys']['sunrise'] + response['timezone'])
 sunset_time = dt.datetime.utcfromtimestamp(response['sys']['sunset'] + response['timezone'])
 theInput = 0
+twoURL = "https://v6.exchangerate-api.com/v6/"
+def get_exchange_rates():
+    pass
 def sortingItOut(numberOfNums, equation):
     trigNum = 0
     numberOfMultipliers = 0
@@ -109,8 +112,8 @@ def sortingItOut(numberOfNums, equation):
             equation.pop(checker - 1)
             equation.pop(checker - 1)
             equation.insert(checker - 1, putInEquation)
-        if equation[checker] == 3:
-            putInEquation = equation[checker - 1] + equation[checker + 1]
+        elif equation[checker] == 3:
+            putInEquation = equation[checker - 1] - equation[checker + 1]
             equation.pop(checker - 1)
             equation.pop(checker - 1)
             equation.pop(checker - 1)
