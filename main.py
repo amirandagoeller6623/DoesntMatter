@@ -20,9 +20,49 @@ description = response['weather'][0]['description']
 sunrise_time = dt.datetime.utcfromtimestamp(response['sys']['sunrise'] + response['timezone'])
 sunset_time = dt.datetime.utcfromtimestamp(response['sys']['sunset'] + response['timezone'])
 theInput = 0
-twoURL = "https://v6.exchangerate-api.com/v6/"
-def get_exchange_rates():
-    pass
+twoURL = "https://v6.exchangerate-api.com/v6/b887674c3d49e19270ab641c"
+rate_original = "USD"
+def hangman():
+    words = list("dominant",litigation,module,shorts,couple,nervous,polite,dilemma,percent,silver,survivor,shiver,
+moving,
+control,
+series,
+develop,
+ministry,
+limited,
+accompany,
+variable,
+interrupt,
+perform,
+eyebrow,
+release,
+extraterrestrial,
+length,
+trance,
+uniform,
+photography,
+sulphur,
+restrict,
+tactic,
+strike,
+willpower,
+import,
+demonstrate,
+normal,
+embryo,greeting,pasture,company,assume,latest,initiative,competence,reality,opposition,exemption,rescue,session")
+def get_exchange_rates(og_rate, to_rate):
+    url = f"{twoURL}/latest/{og_rate}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        rate_data = response.json()
+        thingy = rate_data['conversion_rates'][to_rate]
+        print(thingy)
+    else:
+        print(f"failed to retrieve data {response.status_code}")
+def exchange():
+    ask = input("what is the original currency you want to exchange from (three letter abbreviation)?")
+    second = input("What is the currency you want to exchange to (three letter abbreviation)?")
+    get_exchange_rates(ask, second)
 def sortingItOut(numberOfNums, equation):
     trigNum = 0
     numberOfMultipliers = 0
@@ -166,6 +206,7 @@ while theInput != 10:
     if theInput == 1:
         print("2: Calculator on a budget")
         print("3: Weather")
+        print("4: Currency exchange rates")
         print("10: Done with program")
     if theInput == 3:
         print(f"Temperature in {CITY}: {temp_celsius:.2f}°C or {temp_fahrenheit}°F")
@@ -177,5 +218,7 @@ while theInput != 10:
         print(f"Sun sets in {CITY} at {sunset_time} local time.")
     if theInput == 2:
         checkNum()
+    if theInput == 4:
+        exchange()
 print(" ")
 print("Program Ended")
