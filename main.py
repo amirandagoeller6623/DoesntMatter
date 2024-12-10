@@ -1,6 +1,7 @@
 import datetime as dt
 import requests
 import math
+import random
 BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
 API_KEY = "238d18d07aa46535d9f3b6c35864dbb7"
 CITY = input("Enter your city (capitalize first letter): ")
@@ -23,33 +24,15 @@ theInput = 0
 twoURL = "https://v6.exchangerate-api.com/v6/b887674c3d49e19270ab641c"
 rate_original = "USD"
 def hangman():
-    words = list("dominant",litigation,module,shorts,couple,nervous,polite,dilemma,percent,silver,survivor,shiver,
-moving,
-control,
-series,
-develop,
-ministry,
-limited,
-accompany,
-variable,
-interrupt,
-perform,
-eyebrow,
-release,
-extraterrestrial,
-length,
-trance,
-uniform,
-photography,
-sulphur,
-restrict,
-tactic,
-strike,
-willpower,
-import,
-demonstrate,
-normal,
-embryo,greeting,pasture,company,assume,latest,initiative,competence,reality,opposition,exemption,rescue,session")
+    words = list['carbon', 'recognize', 'correspondence', 'farewell', 'necklace', 'diplomat', 'shareholder',
+    'photograph', 'shoulder', 'sunrise', 'gravel', 'automatic', 'shower', 'beautiful', 'serious', 'ritual',
+    'distributor', 'opponent', 'liberal', 'scrape', 'residence', 'faithful', 'condition', 'committee', 'realism',
+    'career', 'willpower', 'penalty', 'bundle', 'jurisdiction', 'oppose', 'listen', 'mechanical', 'latest', 'favourite',
+    'abortion', 'inhibition', 'provide', 'kitchen', 'summer', 'chance', 'aspect', 'ticket', 'convict', 'artificial',
+    'material', 'drawing', 'dynamic', 'freight']
+    num = random.randint(0, 48)
+    theWord = words[num]
+    print(theWord)
 def get_exchange_rates(og_rate, to_rate):
     url = f"{twoURL}/latest/{og_rate}"
     response = requests.get(url)
@@ -59,6 +42,7 @@ def get_exchange_rates(og_rate, to_rate):
         print(thingy)
     else:
         print(f"failed to retrieve data {response.status_code}")
+
 def exchange():
     ask = input("what is the original currency you want to exchange from (three letter abbreviation)?")
     second = input("What is the currency you want to exchange to (three letter abbreviation)?")
@@ -207,6 +191,7 @@ while theInput != 10:
         print("2: Calculator on a budget")
         print("3: Weather")
         print("4: Currency exchange rates")
+        print("5: hangman")
         print("10: Done with program")
     if theInput == 3:
         print(f"Temperature in {CITY}: {temp_celsius:.2f}°C or {temp_fahrenheit}°F")
@@ -220,5 +205,7 @@ while theInput != 10:
         checkNum()
     if theInput == 4:
         exchange()
+    if theInput == 5:
+        hangman()
 print(" ")
 print("Program Ended")
