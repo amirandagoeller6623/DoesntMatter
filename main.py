@@ -24,15 +24,52 @@ theInput = 0
 twoURL = "https://v6.exchangerate-api.com/v6/b887674c3d49e19270ab641c"
 rate_original = "USD"
 def hangman():
-    words = list['carbon', 'recognize', 'correspondence', 'farewell', 'necklace', 'diplomat', 'shareholder',
+    words = list(['carbon', 'recognize', 'correspondence', 'farewell', 'necklace', 'diplomat', 'shareholder',
     'photograph', 'shoulder', 'sunrise', 'gravel', 'automatic', 'shower', 'beautiful', 'serious', 'ritual',
     'distributor', 'opponent', 'liberal', 'scrape', 'residence', 'faithful', 'condition', 'committee', 'realism',
     'career', 'willpower', 'penalty', 'bundle', 'jurisdiction', 'oppose', 'listen', 'mechanical', 'latest', 'favourite',
     'abortion', 'inhibition', 'provide', 'kitchen', 'summer', 'chance', 'aspect', 'ticket', 'convict', 'artificial',
-    'material', 'drawing', 'dynamic', 'freight']
+    'material', 'drawing', 'dynamic', 'freight'])
     num = random.randint(0, 48)
     theWord = words[num]
+    letters = list(theWord)
+    ig = 0
+    revealed = []
+    conv = []
+    won = 0
     print(theWord)
+    for x in range(len(letters)):
+        conv.append("_")
+    print(conv)
+    while won == 0 and ig != 8:
+        revealed.clear()
+        guess = input("What letter do you want to guess")
+        e = 0
+        if guess in letters:
+            for x in range(len(letters)):
+                if letters[e] == guess:
+                    revealed.append(letters[e])
+                    conv.insert(e, letters[e])
+                    conv.pop(e + 1)
+                else:
+                    revealed.append("_")
+                    ig = ig + 1
+                    if ig == 1:
+                        print("___|___")
+                    if ig == 2:
+                        print("|")
+                        print("|")
+                        print("|")
+                        print("|")
+                        print("|")
+                        print("|")
+                        print("___|___")
+                    if ig == 3:
+                        pass
+                e = e + 1
+            print(conv)
+
+
 def get_exchange_rates(og_rate, to_rate):
     url = f"{twoURL}/latest/{og_rate}"
     response = requests.get(url)
