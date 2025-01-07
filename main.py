@@ -11,6 +11,7 @@ def kelvin_to_celcius_fahrenheit(kelvin):
     return celsius,fahrenheit
 url = BASE_URL + "appid=" + API_KEY + "&q=" + CITY
 response = requests.get(url).json()
+print(response)
 temp_kelvin = response['main']['temp']
 temp_celsius, temp_fahrenheit = kelvin_to_celcius_fahrenheit(temp_kelvin)
 feels_like_kelvin = response['main']['feels_like']
@@ -29,15 +30,20 @@ def hangman():
     'distributor', 'opponent', 'liberal', 'scrape', 'residence', 'faithful', 'condition', 'committee', 'realism',
     'career', 'willpower', 'penalty', 'bundle', 'jurisdiction', 'oppose', 'listen', 'mechanical', 'latest', 'favourite',
     'abortion', 'inhibition', 'provide', 'kitchen', 'summer', 'chance', 'aspect', 'ticket', 'convict', 'artificial',
-    'material', 'drawing', 'dynamic', 'freight'])
-    num = random.randint(0, 48)
+    'material', 'drawing', 'dynamic', 'freight', 'specimen', 'percent', 'remunerate', 'hardware', 'offend', 'finished',
+    'legislature', 'archive', 'listen', 'grudge', 'purpose', 'ancestor', 'temporary', 'temptation', 'assertive',
+    'memory', 'appointment', 'series', 'affect', 'dilemma', 'baseball', 'advantage', 'equation', 'element', 'function',
+    'declaration', 'tournament', 'whisper', 'provide', 'module', 'context', 'particle', 'superintendent', 'dependence',
+    'process', 'mobile', 'prisoner', 'island', 'diamond', 'climate', 'infrastructure', 'threaten', 'buttocks',
+    'welcome', 'experiment', 'implication', 'chapter', 'resignation', 'budget', 'courtship'])
+    num = random.randint(0, 98)
     theWord = words[num]
     letters = list(theWord)
     ig = 0
     revealed = []
     conv = []
     won = 0
-    print(theWord)
+    count = 0
     for x in range(len(letters)):
         conv.append("_")
     print(conv)
@@ -51,25 +57,88 @@ def hangman():
                     revealed.append(letters[e])
                     conv.insert(e, letters[e])
                     conv.pop(e + 1)
+                    count += 1
+                    if count == len(letters):
+                        won = 1
                 else:
                     revealed.append("_")
-                    ig = ig + 1
-                    if ig == 1:
-                        print("___|___")
-                    if ig == 2:
-                        print("|")
-                        print("|")
-                        print("|")
-                        print("|")
-                        print("|")
-                        print("|")
-                        print("___|___")
-                    if ig == 3:
-                        pass
                 e = e + 1
             print(conv)
-
-
+        else:
+            ig = ig + 1
+            if ig == 1:
+                print("___|___")
+                print(" ")
+            if ig == 2:
+                print("   |")
+                print("   |")
+                print("   |")
+                print("   |")
+                print("   |")
+                print("   |")
+                print("___|___")
+                print(" ")
+            if ig == 3:
+                print("   ------")
+                print("   |/")
+                print("   |")
+                print("   |")
+                print("   |")
+                print("   |")
+                print("   |")
+                print("___|___")
+                print(" ")
+            if ig == 4:
+                print("   ----------")
+                print("   |/       |")
+                print("   |       (_)")
+                print("   |")
+                print("   |")
+                print("   |")
+                print("   |")
+                print("___|___")
+                print(" ")
+            if ig == 5:
+                print("   ----------")
+                print("   |/       |")
+                print("   |       (_)")
+                print("   |        |")
+                print("   |        |")
+                print("   |")
+                print("   |")
+                print("___|___")
+                print(" ")
+            if ig == 6:
+                print("   ----------")
+                print("   |/       |")
+                print("   |       (_)")
+                print("   |       \|/")
+                print("   |        |")
+                print("   |")
+                print("   |")
+                print("___|___")
+                print(" ")
+            if ig == 7:
+                print("   ----------")
+                print("   |/       |")
+                print("   |       (_)")
+                print("   |       \|/")
+                print("   |        |")
+                print("   |       / \ ")
+                print("   |")
+                print("___|___")
+                print("YOU LOSE")
+                print(" ")
+                ig = 8
+    if won == 1:
+        print("You won!!!!!!!!!!!!!!!!!!!")
+def dictionary():
+    word = input("What word would you like to look up: ")
+    urld = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word
+    responses = requests.get(urld).json()
+    # defs = responses[0]['meanings'][0]['definitions'][0]['definition']
+    # print(defs)
+    print(responses)
 def get_exchange_rates(og_rate, to_rate):
     url = f"{twoURL}/latest/{og_rate}"
     response = requests.get(url)
@@ -244,5 +313,7 @@ while theInput != 10:
         exchange()
     if theInput == 5:
         hangman()
+    if theInput == 6:
+        dictionary()
 print(" ")
 print("Program Ended")
