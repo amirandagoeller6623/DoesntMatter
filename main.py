@@ -136,8 +136,8 @@ def dictionary():
     word = input("What word would you like to look up: ")
     urld = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word
     responses = requests.get(urld).json()
-    # defs = responses[0]['meanings'][0]['definitions'][0]['definition']
-    # print(defs)
+    defs = responses[0]['meanings'][0]['definitions'][0]['definition']
+    print(defs)
     print(responses)
 def get_exchange_rates(og_rate, to_rate):
     url = f"{twoURL}/latest/{og_rate}"
