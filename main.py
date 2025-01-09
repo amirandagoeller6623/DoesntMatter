@@ -4,7 +4,7 @@ import math
 import random
 BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
 API_KEY = "238d18d07aa46535d9f3b6c35864dbb7"
-CITY = input("Enter your city (capitalize first letter): ")
+CITY = input("Enter your city: ")
 def kelvin_to_celcius_fahrenheit(kelvin):
     celsius = kelvin - 273.15
     fahrenheit = celsius * (9/5) + 32
@@ -136,8 +136,12 @@ def dictionary():
     word = input("What word would you like to look up: ")
     urld = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word
     responses = requests.get(urld).json()
-    defs = responses[0]['meanings'][0]['definitions'][0]['definition']
-    print(defs)
+    i = 0
+    for x in range(len(responses[0]['meanings'])):
+        print(len(responses[0]['meanings']))
+        #print(responses[0]['meanings'])
+        print(responses[0]['meanings'][x]['definitions'][0]['definition'])
+        i = i + 1
     print(responses)
 def get_exchange_rates(og_rate, to_rate):
     url = f"{twoURL}/latest/{og_rate}"
