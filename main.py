@@ -11,7 +11,6 @@ def kelvin_to_celcius_fahrenheit(kelvin):
     return celsius,fahrenheit
 url = BASE_URL + "appid=" + API_KEY + "&q=" + CITY
 response = requests.get(url).json()
-print(response)
 temp_kelvin = response['main']['temp']
 temp_celsius, temp_fahrenheit = kelvin_to_celcius_fahrenheit(temp_kelvin)
 feels_like_kelvin = response['main']['feels_like']
@@ -138,11 +137,8 @@ def dictionary():
     responses = requests.get(urld).json()
     i = 0
     for x in range(len(responses[0]['meanings'])):
-        print(len(responses[0]['meanings']))
-        #print(responses[0]['meanings'])
         print(responses[0]['meanings'][x]['definitions'][0]['definition'])
         i = i + 1
-    print(responses)
 def get_exchange_rates(og_rate, to_rate):
     url = f"{twoURL}/latest/{og_rate}"
     response = requests.get(url)
@@ -302,6 +298,7 @@ while theInput != 10:
         print("3: Weather")
         print("4: Currency exchange rates")
         print("5: hangman")
+        print("6: Dictionary")
         print("10: Done with program")
     if theInput == 3:
         print(f"Temperature in {CITY}: {temp_celsius:.2f}°C or {temp_fahrenheit}°F")
