@@ -249,8 +249,12 @@ def sortingItOut(numberOfNums, equation):
             equation.pop(checker - 1)
             equation.insert(checker - 1, putInEquation)
     print(equation)
-
-
+def battleship():
+    rows, cols = (11, 11)
+    arr = [[0 for i in range(cols)] for j in range(rows)]
+    for x in range(10):
+        arr[x + 1][0] = x + 1
+    print(arr)
 def checkNum():
     numberOfNums = int(input("How many different numbers are there in your equation? "))
     equation = []
@@ -297,8 +301,9 @@ while theInput != 10:
         print("2: Calculator on a budget")
         print("3: Weather")
         print("4: Currency exchange rates")
-        print("5: hangman")
+        print("5: Hangman")
         print("6: Dictionary")
+        print("7: Battleship")
         print("10: Done with program")
     if theInput == 3:
         print(f"Temperature in {CITY}: {temp_celsius:.2f}°C or {temp_fahrenheit}°F")
@@ -316,5 +321,7 @@ while theInput != 10:
         hangman()
     if theInput == 6:
         dictionary()
+    if theInput == 7:
+        battleship()
 print(" ")
 print("Program Ended")
