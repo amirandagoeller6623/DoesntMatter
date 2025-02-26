@@ -254,7 +254,157 @@ def battleship():
     arr = [[0 for i in range(cols)] for j in range(rows)]
     for x in range(10):
         arr[x + 1][0] = x + 1
-    print(arr)
+    arr[0][1] = "a"
+    arr[0][2] = "b"
+    arr[0][3] = "c"
+    arr[0][4] = "d"
+    arr[0][5] = "e"
+    arr[0][6] = "f"
+    arr[0][7] = "g"
+    arr[0][8] = "h"
+    arr[0][9] = "i"
+    arr[0][10] = "j"
+    printboard(arr)
+    placed = 5
+    valid = 0
+    first = 1
+    while placed != 1:
+        valid = 0
+        while valid == 0:
+            letter = input("Where do you want to place your " + str(placed) + " long boat letter coordinate? (the top left part of the ship will be at your coordinate) ")
+            number = int(input("Where is the number coordinate "))
+            orientation = input("vertical or horizontal? (type 'v' or 'h') ")
+            valid = correct(letter, number, orientation, placed)
+        if letter == "a":
+            arr[number][1] = 3
+            if orientation == "h":
+                for x in range(placed - 1):
+                    arr[number][1 + x + 1] = 3
+            if orientation == "v":
+                for p in range(placed - 1):
+                    arr[number + p + 1][1] = 3
+        if letter == "b":
+            arr[number][2] = 3
+            if orientation == "h":
+                for x in range(placed - 1):
+                    arr[number][2 + x + 1] = 3
+            if orientation == "v":
+                for p in range(placed - 1):
+                    arr[number + p + 1][2] = 3
+        if letter == "c":
+            arr[number][3] = 3
+            if orientation == "h":
+                for x in range(placed - 1):
+                    arr[number][3 + x + 1] = 3
+            if orientation == "v":
+                for p in range(placed - 1):
+                    arr[number + p + 1][3] = 3
+        if letter == "d":
+            arr[number][4] = 3
+            if orientation == "h":
+                for x in range(placed - 1):
+                    arr[number][4 + x + 1] = 3
+            if orientation == "v":
+                for p in range(placed - 1):
+                    arr[number + p + 1][4] = 3
+        if letter == "e":
+            arr[number][5] = 3
+            if orientation == "h":
+                for x in range(placed - 1):
+                    arr[number][5 + x + 1] = 3
+            if orientation == "v":
+                for p in range(placed - 1):
+                    arr[number + p + 1][5] = 3
+        if letter == "f":
+            arr[number][6] = 3
+            if orientation == "h":
+                for x in range(placed - 1):
+                    arr[number][6 + x + 1] = 3
+            if orientation == "v":
+                for p in range(placed - 1):
+                    arr[number + p + 1][6] = 3
+        if letter == "g":
+            arr[number][7] = 3
+            if orientation == "h":
+                for x in range(placed - 1):
+                    arr[number][7 + x + 1] = 3
+            if orientation == "v":
+                for p in range(placed - 1):
+                    arr[number + p + 1][7] = 3
+        if letter == "h":
+            arr[number][8] = 3
+            if orientation == "h":
+                for x in range(placed - 1):
+                    arr[number][8 + x + 1] = 3
+            if orientation == "v":
+                for p in range(placed - 1):
+                    arr[number + p + 1][8] = 3
+        if letter == "i":
+            arr[number][9] = 3
+            if orientation == "h":
+                for x in range(placed - 1):
+                    arr[number][9 + x + 1] = 3
+            if orientation == "v":
+                for p in range(placed - 1):
+                    arr[number + p + 1][9] = 3
+        if letter == "j":
+            arr[number][10] = 3
+            if orientation == "h":
+                for x in range(placed - 1):
+                    arr[number][10 + x + 1] = 3
+            if orientation == "v":
+                for p in range(placed - 1):
+                    arr[number + p + 1][10] = 3
+        if placed != 3 or first != 1:
+            placed = placed - 1
+        else:
+            first = 2
+        printboard(arr)
+
+def printboard(arr):
+    print("3's represent your boats")
+    print("[" + "   " + arr[0][1] + ", " + arr[0][2] + ", " + arr[0][3] + ", " + arr[0][4] + ", " + arr[0][5] + ", " +
+          arr[0][6] + ", " + arr[0][7] + ", " + arr[0][8] + ", " + arr[0][9] + ", " + arr[0][10] + "]")
+    print(arr[1])
+    print(arr[2])
+    print(arr[3])
+    print(arr[4])
+    print(arr[5])
+    print(arr[6])
+    print(arr[7])
+    print(arr[8])
+    print(arr[9])
+    print(arr[10])
+def correct(let, num, ore, len):
+    if len == 5:
+        if ore == "h":
+            if let == "g" or let == "h" or let == "i" or let == "j":
+                return 0
+        if ore == "v":
+            if num == 7 or num == 8 or num == 9 or num == 10:
+                return 0
+    if len == 4:
+        if ore == "h":
+            if let == "h" or let == "i" or let == "j":
+                return 0
+        if ore == "v":
+            if num == 8 or num == 9 or num == 10:
+                return 0
+    if len == 3:
+        if ore == "h":
+            if let == "i" or let == "j":
+                return 0
+        if ore == "v":
+            if num == 9 or num == 10:
+                return 0
+    if len == 2:
+        if ore == "h":
+            if let == "j":
+                return 0
+        if ore == "v":
+            if num == 10:
+                return 0
+    return 1
 def checkNum():
     numberOfNums = int(input("How many different numbers are there in your equation? "))
     equation = []
