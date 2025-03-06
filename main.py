@@ -361,6 +361,106 @@ def battleship():
             first = 2
         printboard(arr)
 
+def enemy():
+    rows, cols = (11, 11)
+    arr = [[0 for i in range(cols)] for j in range(rows)]
+    for x in range(10):
+        arr[x + 1][0] = x + 1
+    arr[0][1] = "a"
+    arr[0][2] = "b"
+    arr[0][3] = "c"
+    arr[0][4] = "d"
+    arr[0][5] = "e"
+    arr[0][6] = "f"
+    arr[0][7] = "g"
+    arr[0][8] = "h"
+    arr[0][9] = "i"
+    arr[0][10] = "j"
+    arr[2][3] = 3
+    arr[2][4] = 3
+    arr[2][5] = 3
+    arr[2][6] = 3
+    arr[2][7] = 3
+    arr[8][9] = 3
+    arr[9][9] = 3
+    arr[10][9] = 3
+    arr[11][9] = 3
+    arr[3][11] = 3
+    arr[4][11] = 3
+    arr[5][11] = 3
+    arr[4][5] = 3
+    arr[4][6] = 3
+    arr[4][7] = 3
+    arr[7][7] = 3
+    arr[7][8] = 3
+    row,col = (11, 11)
+    pri = [[0 for i in range(col)] for j in range(row)]
+    for x in range(10):
+        pri[x + 1][0] = x + 1
+    pri[0][1] = "a"
+    pri[0][2] = "b"
+    pri[0][3] = "c"
+    pri[0][4] = "d"
+    pri[0][5] = "e"
+    pri[0][6] = "f"
+    pri[0][7] = "g"
+    pri[0][8] = "h"
+    pri[0][9] = "i"
+    pri[0][10] = "j"
+    printboard(pri)
+    letter = input("What letter coordinate do you guess: ")
+    num = int(input("What number coordinate do you guess: "))
+    d = 0
+    if letter == "a":
+        d = 1 + 1
+    if letter == "b":
+        d = 2 + 1
+    if letter == "c":
+        d = 3 + 1
+    if letter == "d":
+        d = 4 + 1
+    if letter == "e":
+        d = 5 + 1
+    if letter == "f":
+        d = 6 + 1
+    if letter == "g":
+        d = 7 + 1
+    if letter == "h":
+        d = 8 + 1
+    if letter == "i":
+        d = 9 + 1
+    if letter == "j":
+        d = 10 + 1
+    if arr[num][d] == 3:
+        pri[num][d] = 9
+        print("Hit (9's are hits)")
+    else:
+        pri[num][d] = 6
+        print("Missed (6's are misses)")
+    five = 0
+    four = 0
+    three = 0
+    three2 = 0
+    two = 0
+    if pri[2][3] == 9 and pri[2][4] == 9 and pri[2][4] == 9 and pri[2][5] == 9 and pri[2][6] == 9:
+        print("5 long ship is sunk")
+        five = 1
+    if pri[8][9] == 9 and pri[8][9] == 9 and pri[9][9] == 9 and pri[10][9] == 9 and pri[11][9] == 9:
+        print("4 long ship is sunk")
+        four = 1
+    if pri[3][11] == 9 and pri[4][11] == 9 and pri[5][11]:
+        print("one three ship is sunk")
+        three = 1
+    if pri[4][5] == 9 and pri[4][6] == 9 and pri[4][7]:
+        print("one three ship is sunk")
+        three2 = 1
+    if pri[7][7] == 9 and pri[7][8] == 9:
+        print("2 long ship is sunk")
+        two = 1
+    if five == 1 and four == 1 and three == 1 and three2 == 1 and two == 1:
+        print("You Won!")
+        return 1
+    printboard(pri)
 def printboard(arr):
     print("3's represent your boats")
     print("[" + "   " + arr[0][1] + ", " + arr[0][2] + ", " + arr[0][3] + ", " + arr[0][4] + ", " + arr[0][5] + ", " +
