@@ -381,13 +381,13 @@ def enemy():
     arr[2][5] = 3
     arr[2][6] = 3
     arr[2][7] = 3
+    arr[7][9] = 3
     arr[8][9] = 3
     arr[9][9] = 3
     arr[10][9] = 3
-    arr[11][9] = 3
-    arr[3][11] = 3
-    arr[4][11] = 3
-    arr[5][11] = 3
+    arr[3][10] = 3
+    arr[4][10] = 3
+    arr[5][10] = 3
     arr[4][5] = 3
     arr[4][6] = 3
     arr[4][7] = 3
@@ -408,59 +408,76 @@ def enemy():
     pri[0][9] = "i"
     pri[0][10] = "j"
     printboard(pri)
-    letter = input("What letter coordinate do you guess: ")
-    num = int(input("What number coordinate do you guess: "))
-    d = 0
-    if letter == "a":
-        d = 1 + 1
-    if letter == "b":
-        d = 2 + 1
-    if letter == "c":
-        d = 3 + 1
-    if letter == "d":
-        d = 4 + 1
-    if letter == "e":
-        d = 5 + 1
-    if letter == "f":
-        d = 6 + 1
-    if letter == "g":
-        d = 7 + 1
-    if letter == "h":
-        d = 8 + 1
-    if letter == "i":
-        d = 9 + 1
-    if letter == "j":
-        d = 10 + 1
-    if arr[num][d] == 3:
-        pri[num][d] = 9
-        print("Hit (9's are hits)")
+    win = 0
+    count = 0
+    while win == 0 and count < 17:
+        letter = input("What letter coordinate do you guess: ")
+        num = int(input("What number coordinate do you guess: "))
+        d = 0
+        if letter == "a":
+            d = 1
+        if letter == "b":
+            d = 2
+        if letter == "c":
+            d = 3
+        if letter == "d":
+            d = 4
+        if letter == "e":
+            d = 5
+        if letter == "f":
+            d = 6
+        if letter == "g":
+            d = 7
+        if letter == "h":
+            d = 8
+        if letter == "i":
+            d = 9
+        if letter == "j":
+            d = 10
+        if arr[num][d] == 3:
+            pri[num][d] = 9
+            print("Hit (9's are hits)")
+        else:
+            pri[num][d] = 6
+            print("Missed (6's are misses)")
+        five = 0
+        four = 0
+        three = 0
+        three2 = 0
+        two = 0
+        if pri[2][3] == 9 and pri[2][4] == 9 and pri[2][4] == 9 and pri[2][5] == 9 and pri[2][6] == 9:
+            print("5 long ship is sunk")
+            five = 1
+        if pri[7][9] == 9 and pri[8][9] == 9 and pri[9][9] == 9 and pri[10][9] == 9:
+            print("4 long ship is sunk")
+            four = 1
+        if pri[3][10] == 9 and pri[4][10] == 9 and pri[5][10]:
+            print("one three ship is sunk")
+            three = 1
+        if pri[4][5] == 9 and pri[4][6] == 9 and pri[4][7]:
+            print("one three ship is sunk")
+            three2 = 1
+        if pri[7][7] == 9 and pri[7][8] == 9:
+            print("2 long ship is sunk")
+            two = 1
+        if five == 1 and four == 1 and three == 1 and three2 == 1 and two == 1:
+            print("You Won!")
+            win = 1
+        printboard(pri)
+        y = random.randint(1, 11)
+        x = random.randint(1, 11)
+        while arr[y][x] == 9 or arr[y][x] == 6:
+            y = random.randint(1, 11)
+            x = random.randint(1, 11)
+        if arr[y][x] == 3:
+            arr[y][x] = 9
+            count = count + 1
+        elif arr[y][x] == 0:
+            arr[x][y] = 6
+    if count == 17:
+        print("YOU LOST")
     else:
-        pri[num][d] = 6
-        print("Missed (6's are misses)")
-    five = 0
-    four = 0
-    three = 0
-    three2 = 0
-    two = 0
-    if pri[2][3] == 9 and pri[2][4] == 9 and pri[2][4] == 9 and pri[2][5] == 9 and pri[2][6] == 9:
-        print("5 long ship is sunk")
-        five = 1
-    if pri[8][9] == 9 and pri[8][9] == 9 and pri[9][9] == 9 and pri[10][9] == 9 and pri[11][9] == 9:
-        print("4 long ship is sunk")
-        four = 1
-    if pri[3][11] == 9 and pri[4][11] == 9 and pri[5][11]:
-        print("one three ship is sunk")
-        three = 1
-    if pri[4][5] == 9 and pri[4][6] == 9 and pri[4][7]:
-        print("one three ship is sunk")
-        three2 = 1
-    if pri[7][7] == 9 and pri[7][8] == 9:
-        print("2 long ship is sunk")
-        two = 1
-    if five == 1 and four == 1 and three == 1 and three2 == 1 and two == 1:
-        print("You Won!")
-        return 1
-    printboard(pri)
+        print("YOU WIN")
 def printboard(arr):
     print("3's represent your boats")
     print("[" + "   " + arr[0][1] + ", " + arr[0][2] + ", " + arr[0][3] + ", " + arr[0][4] + ", " + arr[0][5] + ", " +
@@ -544,7 +561,6 @@ def checkNum():
             num = int(input("Enter the last number: "))
             equation.append(num)
     sortingItOut(numberOfNums, equation)
-
 while theInput != 10:
     theInput = int(input("What would you like to know? type 1 for all options: "))
     if theInput == 1:
@@ -573,5 +589,6 @@ while theInput != 10:
         dictionary()
     if theInput == 7:
         battleship()
+        enemy()
 print(" ")
 print("Program Ended")
