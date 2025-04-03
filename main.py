@@ -360,8 +360,9 @@ def battleship():
         else:
             first = 2
         printboard(arr)
+        enemy(arr)
 
-def enemy():
+def enemy(playa):
     rows, cols = (11, 11)
     arr = [[0 for i in range(cols)] for j in range(rows)]
     for x in range(10):
@@ -464,16 +465,17 @@ def enemy():
             print("You Won!")
             win = 1
         printboard(pri)
-        y = random.randint(1, 11)
-        x = random.randint(1, 11)
-        while arr[y][x] == 9 or arr[y][x] == 6:
-            y = random.randint(1, 11)
-            x = random.randint(1, 11)
+        y = random.randint(1, 10)
+        x = random.randint(1, 10)
+        while playa[y][x] == 9 or playa[y][x] == 6:
+            y = random.randint(1, 10)
+            x = random.randint(1, 10)
         if arr[y][x] == 3:
             arr[y][x] = 9
             count = count + 1
         elif arr[y][x] == 0:
             arr[x][y] = 6
+        printboard(arr)
     if count == 17:
         print("YOU LOST")
     else:
@@ -589,6 +591,5 @@ while theInput != 10:
         dictionary()
     if theInput == 7:
         battleship()
-        enemy()
 print(" ")
 print("Program Ended")
