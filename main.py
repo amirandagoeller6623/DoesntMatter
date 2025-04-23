@@ -360,7 +360,7 @@ def battleship():
         else:
             first = 2
         printboard(arr)
-        enemy(arr)
+    enemy(arr)
 
 def enemy(playa):
     rows, cols = (11, 11)
@@ -437,15 +437,16 @@ def enemy(playa):
             d = 10
         if arr[num][d] == 3:
             pri[num][d] = 9
-            print("Hit (9's are hits)")
+            print("Hit (9's are hits and 6's are misses)")
         else:
             pri[num][d] = 6
-            print("Missed (6's are misses)")
+            print("Missed (6's are misses and 9's are hits)")
         five = 0
         four = 0
         three = 0
         three2 = 0
         two = 0
+        printboard(arr)
         if pri[2][3] == 9 and pri[2][4] == 9 and pri[2][4] == 9 and pri[2][5] == 9 and pri[2][6] == 9:
             print("5 long ship is sunk")
             five = 1
@@ -470,12 +471,12 @@ def enemy(playa):
         while playa[y][x] == 9 or playa[y][x] == 6:
             y = random.randint(1, 10)
             x = random.randint(1, 10)
-        if arr[y][x] == 3:
-            arr[y][x] = 9
+        if playa[y][x] == 3:
+            playa[y][x] = 9
             count = count + 1
-        elif arr[y][x] == 0:
-            arr[x][y] = 6
-        printboard(arr)
+        elif playa[y][x] == 0:
+            playa[x][y] = 6
+        printboard(playa)
     if count == 17:
         print("YOU LOST")
     else:
