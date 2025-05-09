@@ -565,15 +565,15 @@ def checkNum():
             equation.append(num)
     sortingItOut(numberOfNums, equation)
 while theInput != 10:
-    theInput = int(input("What would you like to know? type 1 for all options: "))
+    theInput = int(input("What would you like to do/know? type 1 for all options: "))
     if theInput == 1:
-        print("2: Calculator on a budget")
+        print("2: A Bad Calculator")
         print("3: Weather")
-        print("4: Currency exchange rates")
+        print("4: Currency Exchange Rates")
         print("5: Hangman")
         print("6: Dictionary")
         print("7: Battleship")
-        print("10: Done with program")
+        print("10: Done With Program")
     if theInput == 3:
         print(f"Temperature in {CITY}: {temp_celsius:.2f}°C or {temp_fahrenheit}°F")
         print(f"Temperature in {CITY} feels like: {temp_celsius:.2f}°C or {temp_fahrenheit:.2f}°F")
